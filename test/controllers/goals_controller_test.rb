@@ -5,5 +5,4 @@ class GoalsControllerTest < ActionDispatch::IntegrationTest
     get goals_index_url
     assert_response :success
   end
-
 end

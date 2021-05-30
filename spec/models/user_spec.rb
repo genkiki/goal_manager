@@ -17,17 +17,17 @@ RSpec.describe User, type: :model do
     context "必須入力項目が空欄の場合" do
       it "名前が空欄だと無効" do
         user = FactoryBot.build(:user, name: nil)
-        expect(user).to_not be_valid
+        expect(user).not_to be_valid
       end
 
       it "アドレスが空欄だと無効" do
         user = FactoryBot.build(:user, email: nil)
-        expect(user).to_not be_valid
+        expect(user).not_to be_valid
       end
 
       it "パスワードが空欄だと無効" do
         user = FactoryBot.build(:user, password: nil)
-        expect(user).to_not be_valid
+        expect(user).not_to be_valid
       end
     end
   end
@@ -36,7 +36,7 @@ RSpec.describe User, type: :model do
     context "論理チェック" do
       it "パスワードと確認用パスワードが不一致だと無効" do
         user = FactoryBot.build(:user, password: "test", password_confirmation: "testtest")
-        expect(user).to_not be_valid
+        expect(user).not_to be_valid
       end
     end
   end

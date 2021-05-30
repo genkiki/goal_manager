@@ -17,17 +17,17 @@ RSpec.describe Goal, type: :model do
     context "必須入力項目が空欄の場合" do
       it "ユーザーIDが空欄だと無効" do
         goal = FactoryBot.build(:goal, user_id: nil)
-        expect(goal).to_not be_valid
+        expect(goal).not_to be_valid
       end
 
       it "内容が空欄だと無効" do
         goal = FactoryBot.build(:goal, content: nil)
-        expect(goal).to_not be_valid
+        expect(goal).not_to be_valid
       end
 
       it "結果が空欄だと無効" do
         goal = FactoryBot.build(:goal, result: nil)
-        expect(goal).to_not be_valid
+        expect(goal).not_to be_valid
       end
     end
   end

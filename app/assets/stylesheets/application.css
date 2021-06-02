@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+/*  共通部品  */
+
+body {
+  background-color: aliceblue;
+}
+
+
+/* 目標一覧  */
+
+.goals-list {
+  background-color: white;
+  list-style: none;
+}
+
+.goal-link {
+  text-decoration: none;
+  color: black;
+  font-size: 28px;
+  display: block;
+}
+
+.goal {
+  border-bottom: 2px solid aliceblue;
+}

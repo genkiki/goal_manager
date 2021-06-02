@@ -1,2 +1,29 @@
-<h1>Goals#index</h1>
-<p>Find me in app/views/goals/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-sm-12">
+    </div>
+    <div class="col-lg-8 col-sm-12">
+      <%= search_form_for @q do |f| %>
+        <%= f.label :content_cont, '内容' %>
+        <%= f.search_field :content_cont %>
+        <%= f.label :state, '結果' %>
+        <%= f.collection_select :result_eq, @states, :id, :state %>
+        <%= f.submit class: "btn btn-outline-primary" %>
+      <% end %>
+      <%= paginate @goals %>
+      <%= page_entries_info @goals %>
+      <ul class="goals-list">
+        <% @goals.each do |goal| %>
+          <li class="goal">
+            <%= link_to goal.content, goal_path(goal.id), class: "goal-link goal-title" %>
+            <span class="writer">投稿者：<%= goal.user.name %></span><br>
+            <span class="tag">タグ：<%=  %> </span> <br>
+            <span class="bookmark">ブックマーク数：<%=  %> </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-lg-2 col-sm-12">
+    </div>
+  </div>
+</div>

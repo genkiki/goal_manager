@@ -38,3 +38,17 @@ body {
 .goal {
   border-bottom: 2px solid aliceblue;
 }
+
+/* 目標詳細 */
+
+.goal-title {
+  font-size: 32px;
+}
+
+.goal-table {
+  background-color: white;
+}
+
+.goal-table tr th, .goal-table tr td {
+  padding: 15px;
+}

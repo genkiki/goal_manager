@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-sm-10">
+      <table class="goal-table">
+        <tr>
+          <p class="goal-title"> <%= @goal.content %> </p>
+        </tr>
+        <tr>
+          <th>課題</th>
+          <td>
+            <% @goal.tasks.each do |task| %>
+              <%= link_to task.content, task_path(task.id) %>
+              <span><%= task.status %></span><br>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>結果</th>
+          <td> <%= @result %> </td>
+        </tr>
+        <tr>
+          <th>
+            原因<br>
+            (達成の場合は成功要因)
+          </th>
+          <td> <%= @goal.cause %> </td>
+        </tr>
+        <tr>
+          <th>改善案</th>
+          <td> <%= @goal.improvement %> </td>
+        </tr>
+      </table>
+      <%= link_to "編集", edit_goal_path(@goal.id), class: "btn btn-primary" %>
+      <%= link_to "削除", goal_path(@goal.id), method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

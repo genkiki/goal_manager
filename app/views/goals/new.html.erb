@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-sm-10">
+      <h2>目標作成</h2>
+      <div class="form-area">
+        <%= form_with url: goals_path do |f| %>
+          <table class="goal-table">
+            <tr>
+              <p> 目標：<%= f.text_field :goal_content, placeholder: "達成したいこと" %> </p>
+            </tr>
+            <tr>
+              <p> 開始日：<%= f.datetime_field :goal_start_date %> </p>
+              <p> 終了日：<%= f.datetime_field :goal_end_date %> </p>
+            </tr>
+            <%= f.fields_for :tasks do |t| %>
+              <%= render "task_fields", f: t %>
+            <% end %>
+            <div id="detail-association-insertion-point"></div>
+            <%# 要修正 %>
+            <%# <%= link_to_add_association "+フォームを追加", f, :tasks,
+            class: "btn btn-secondary btn-block",
+            data: {
+              association_insertion_node: '#detail-association-insertion-point',
+              association_insertion_method: 'after'
+            } %> %>
+          </table>
+          <%= f.submit "作成", class: "btn btn-primary" %>
+          <%= link_to "キャンセル", goals_path, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

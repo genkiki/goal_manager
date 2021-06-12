@@ -3,6 +3,8 @@
     <div class="col-lg-2 col-sm-12">
     </div>
     <div class="col-lg-8 col-sm-12">
+      <%= link_to "新規作成", new_goal_path, class: "btn btn-primary" %>
+
       <%= search_form_for @q do |f| %>
         <%= f.label :content_cont, '内容' %>
         <%= f.search_field :content_cont %>

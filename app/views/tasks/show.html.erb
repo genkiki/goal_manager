@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-sm-10">
+      <table class="task-table">
+        <tr>
+          <p class="task-title">課題：<%= @task.content %> </p>
+        </tr>
+        <tr>
+          <th>アクション</th>
+          <td> <%= @task.action %> </td>
+        </tr>
+        <tr>
+          <th>期間</th>
+          <% if @task.start_date.blank? && @task.end_date.blank? %>
+            <td>登録なし</td>
+          <% else %>
+            <td> <%= @task.start_date %> 〜 <%= @task.end_date %> </td>
+          <% end %>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <td> <%= @task.status %> </td>
+        </tr>
+      </table>
+      <%= link_to "編集", edit_task_path(@task.id), class: "btn btn-primary" %>
+      <%= link_to "削除", task_path(@task.id), method: :delete, class: "btn btn-danger" %>
+      <%= link_to "目標に戻る", goal_path(@task.goal_id), class: "btn btn-dark" %>
+      <%= link_to "一覧に戻る", goals_path, class: "btn btn-dark" %>
+    </div>
+  </div>
+</div>

@@ -52,3 +52,17 @@ body {
 .goal-table tr th, .goal-table tr td {
   padding: 15px;
 }
+
+/* 課題詳細 */
+
+.task-title {
+  font-size: 32px;
+}
+
+.task-table {
+  background-color: white;
+}
+
+.task-table tr th, .task-table tr td {
+  padding: 15px;
+}

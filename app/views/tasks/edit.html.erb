@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-sm-10">
+    <h2>課題修正</h2>
+      <%= form_with model: @task do |f| %>
+        <table class="task-table">
+          <tr>
+            <th>課題</th>
+            <td><%= f.text_area :content, value: @task.content %></td>
+          </tr>
+          <tr>
+            <th>アクション</th>
+            <td> <%= f.text_area :action, value: @task.action %></td>
+          </tr>
+          <tr>
+            <th>開始日</th>
+            <td> <%= f.datetime_field :start_date, value: @task.start_date %></td>
+          </tr>
+          <tr>
+            <th>終了日</th>
+            <td> <%= f.datetime_field :end_date, value: @task.end_date %></td>
+          </tr>
+          <tr>
+            <th>ステータス</th>
+            <td> <%= f.text_field :status, value: @task.status %></td>
+          </tr>
+          <tr>
+            <th><%= f.submit "変更", class: "btn btn-primary" %></th>
+          </tr>
+        </table>
+      <% end %>
+      <%= link_to "目標に戻る", goal_path(@task.goal_id), class: "btn btn-dark" %>
+      <%= link_to "一覧に戻る", goals_path, class: "btn btn-dark" %>
+    </div>
+  </div>
+</div>

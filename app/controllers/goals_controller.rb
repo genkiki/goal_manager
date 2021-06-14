@@ -31,7 +31,7 @@ class GoalsController < ApplicationController
       redirect_to "/", notice: "目標を作成しました"
     else
       logger.debug "保存失敗しました!!!!!!!!"
-      logger.debug @goal.errors.full_message
+      logger.debug @goal.errors.full_messages.join("¥n")
       render new_goal_path
     end
 

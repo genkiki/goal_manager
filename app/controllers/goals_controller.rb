@@ -27,8 +27,11 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
 
     if @goal.save
+      logger.debug "保存成功しました!!!!!!!!"
       redirect_to "/", notice: "目標を作成しました"
     else
+      logger.debug "保存失敗しました!!!!!!!!"
+      logger.debug @goal.errors.full_message
       render new_goal_path
     end
 
@@ -62,8 +65,9 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.require(:goal).permit(:content, :start_date, :end_date,
-                                  tasks_attributes:[:id, :content, :action, :start_date, :end_date, :_destroy])
-                          .merge(user_id: 1, result: "3")# for develop
+    params.require(:goal).permit(:content, :start_date, :end_date, :result,
+                                  tasks_attributes: [:id, :content, :action, :start_date, :end_date, :status, :_destroy])
+                          .merge(user_id: 1,# for develop
+                                  tasks_attributes: [user_id: 1])# for develop
   end
 end

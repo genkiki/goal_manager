@@ -50,10 +50,27 @@ body {
   font-size: 32px;
 }
 
-.goal-table {
+.goal-table, .task-table {
   background-color: white;
 }
 
 .goal-table tr th, .goal-table tr td {
   padding: 15px;
+}
+
+/* 目標登録 */
+.task-form-area {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  margin-bottom: 15px;
+}
+
+.under-line {
+  border-bottom: 1px solid gray;
+  margin-bottom: 15px;
+}
+
+.btn-task-add {
+  margin-bottom: 15px;
 }

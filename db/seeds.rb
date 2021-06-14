@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+GoalState.create(state: '予定')
+GoalState.create(state: '実施中')
 GoalState.create(state: '達成')
 GoalState.create(state: '達成ならず')
-GoalState.create(state: '実施中')
+TaskState.create(state: '予定')
+TaskState.create(state: '実施中')
+TaskState.create(state: '完了')

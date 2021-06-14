@@ -3,27 +3,27 @@
     <div class="col-lg-8 col-sm-10">
       <h2>目標作成</h2>
       <div class="form-area">
-        <%= form_with url: goals_path do |f| %>
-          <table class="goal-table">
-            <tr>
-              <p> 目標：<%= f.text_field :goal_content, placeholder: "達成したいこと" %> </p>
-            </tr>
-            <tr>
-              <p> 開始日：<%= f.datetime_field :goal_start_date %> </p>
-              <p> 終了日：<%= f.datetime_field :goal_end_date %> </p>
-            </tr>
-            <%= f.fields_for :tasks do |t| %>
-              <%= render "task_fields", f: t %>
-            <% end %>
-            <div id="detail-association-insertion-point"></div>
-            <%# 要修正 %>
-            <%# <%= link_to_add_association "+フォームを追加", f, :tasks,
-            class: "btn btn-secondary btn-block",
-            data: {
-              association_insertion_node: '#detail-association-insertion-point',
-              association_insertion_method: 'after'
-            } %> %>
-          </table>
+        <%= form_with model: @goal do |f| %>
+          <div class="goal-table">
+              <p> 目標：<%= f.text_field :content, placeholder: "達成したいこと" %> </p>
+              <p> 開始日：<%= f.datetime_field :start_date %> </p>
+              <p> 終了日：<%= f.datetime_field :end_date %> </p>
+              <p> ステータス：<%= f.select :result, GoalState.all.collect { |a| [a.state, a.id] } %></p>
+              <div class="under-line"></div>
+
+              <%= f.fields_for :tasks do |t| %>
+                <%= render "task_fields", f: t %>
+              <% end %>
+
+              <div id="detail-association-insertion-point"></div>
+
+              <%= link_to_add_association "+課題を追加", f, :tasks,
+              class: "btn-task-add btn btn-secondary",
+              data: {
+                association_insertion_node: '#detail-association-insertion-point',
+                association_insertion_method: 'after'
+              } %>
+          </div>
           <%= f.submit "作成", class: "btn btn-primary" %>
           <%= link_to "キャンセル", goals_path, class: "btn btn-danger" %>
         <% end %>

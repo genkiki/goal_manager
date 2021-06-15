@@ -6,7 +6,8 @@
       <p> 開始日：<%= f.datetime_field :start_date %> </p>
       <p> 終了日：<%= f.datetime_field :end_date %> </p>
       <p> ステータス：<%= f.select :status, TaskState.all.collect { |a| [a.state, a.id] } %></p>
-
+      <%= f.hidden_field :user_id, :value => 1 %>
+      <%= f.hidden_field :goal_id, :value => 1 %>
     </div>
     <div>
       <%= link_to_remove_association "課題を削除", f, class: "btn-task-delete btn btn-secondary" %>

@@ -1,6 +1,6 @@
 class Goal < ApplicationRecord
   belongs_to :user
-  has_many :tasks, inverse_of: :goal
+  has_many :tasks
   accepts_nested_attributes_for :tasks, allow_destroy: true
 
   validates :user_id, presence: true

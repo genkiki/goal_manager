@@ -24,7 +24,10 @@ class GoalsController < ApplicationController
     #                       result: "3",
     #                       start_date: params[:goal_start_date],
     #                       end_date: params[:goal_end_date])
-    @goal = Goal.new(goal_params)
+    @current_user = User.find(1)
+    logger.debug "ユーザーID：#{@current_user.id}!!!!!!!!"
+    @goal = @current_user.goals.new(goal_params)
+    # @goal = Goal.new(goal_params)
 
     if @goal.save
       logger.debug "保存成功しました!!!!!!!!"
@@ -66,8 +69,6 @@ class GoalsController < ApplicationController
 
   def goal_params
     params.require(:goal).permit(:content, :start_date, :end_date, :result,
-                                  tasks_attributes: [:id, :content, :action, :start_date, :end_date, :status, :_destroy])
-                          .merge(user_id: 1,# for develop
-                                  tasks_attributes: [user_id: 1])# for develop
+                                  tasks_attributes: [:id, :user_id, :goal_id, :content, :action, :start_date, :end_date, :status, :_destroy])
   end
 end

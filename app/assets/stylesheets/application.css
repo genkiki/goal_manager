@@ -58,6 +58,7 @@ body {
   padding: 15px;
 }
 
+
 /* 目標登録 */
 .task-form-area {
   display: flex;
@@ -73,4 +74,19 @@ body {
 
 .btn-task-add {
   margin-bottom: 15px;
+}
+
+/* 課題詳細 */
+
+.task-title {
+  font-size: 32px;
+}
+
+.task-table {
+  background-color: white;
+}
+
+.task-table tr th, .task-table tr td {
+  padding: 15px;
+
 }

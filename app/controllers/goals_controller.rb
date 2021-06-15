@@ -11,51 +11,20 @@ class GoalsController < ApplicationController
   end
 
   def new
-    # @new_goal = Goal.new(user_id: 1, # for develop
-    #                     result: "3" )
-    # @new_goal = Goal.new
     @goal = Goal.new
     @task = @goal.tasks.build
+    @current_user = User.find(1)
   end
 
   def create
-    # new_goal = Goal.new(content: params[:goal_content],
-    #                       user_id: 1, # for develop
-    #                       result: "3",
-    #                       start_date: params[:goal_start_date],
-    #                       end_date: params[:goal_end_date])
     @current_user = User.find(1)
-    logger.debug "ユーザーID：#{@current_user.id}!!!!!!!!"
     @goal = @current_user.goals.new(goal_params)
-    # @goal = Goal.new(goal_params)
 
     if @goal.save
-      logger.debug "保存成功しました!!!!!!!!"
       redirect_to "/", notice: "目標を作成しました"
     else
-      logger.debug "保存失敗しました!!!!!!!!"
-      logger.debug @goal.errors.full_messages.join("¥n")
       render new_goal_path
     end
-
-    # if new_goal.save
-    #   new_task = Task.new(goal_id: new_goal.id,
-    #                       user_id: 1, # for develop
-    #                       content: params[:task_content],
-    #                       status: "予定",
-    #                       action: params[:task_action],
-    #                       start_date: params[:task_start_date],
-    #                       end_date: params[:task_end_date])
-    #   if new_task.save
-    #     redirect_to "/", notice: "目標を作成しました"
-    #   else
-    #     flash[:notice] = "課題作成か失敗しました"
-    #     render new_goal_path
-    #   end
-    # else
-    #   flash[:notice] = "目標作成が失敗しました"
-    #   render new_goal_path
-    # end
   end
 
   def destroy

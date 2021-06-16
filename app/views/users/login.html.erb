@@ -1,0 +1,13 @@
+<div class="user-register">
+  <h2>ログイン</h2>
+  <% if session[:notice] %>
+    <p> <%=  %> </p>
+  <% end %>
+  <%= form_with path: login_path do |f| %>
+    <p><%= f.text_field :email, placeholder: "メールアドレス", class: "user-register-form" %> </p>
+    <p><%= f.password_field :password, placeholder: "パスワード", class: "user-register-form" %> </p>
+    <%= f.submit "ログイン", class: "btn btn-primary user-register-btn" %>
+    <%= link_to "テストログイン", login_easy_path, class: "btn btn-secondary user-register-btn" %>
+    <%= link_to "キャンセル", goals_path, class: "btn btn-danger user-register-btn" %>
+  <% end %>
+</div>

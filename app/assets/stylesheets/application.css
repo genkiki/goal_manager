@@ -90,3 +90,20 @@ body {
   padding: 15px;
 
 }
+
+/* ユーザー登録 */
+
+.user-register {
+  margin: 0 auto;
+  max-width: 20%;
+  text-align: center;
+}
+
+.user-register-form {
+  width: 100%;
+}
+
+.user-register-btn {
+  width: 100%;
+  margin-bottom: 15px;
+}

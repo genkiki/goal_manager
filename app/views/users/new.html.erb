@@ -1,11 +1,13 @@
-<div class="user-register">
-  <h2>新規登録</h2>
-  <%= form_with model: @user do |f| %>
-    <p><%= f.text_field :name, placeholder: "ユーザー名", class: "user-register-form" %> </p>
-    <p><%= f.text_field :email, placeholder: "メールアドレス", class: "user-register-form" %> </p>
-    <p><%= f.password_field :password, placeholder: "パスワード", class: "user-register-form" %> </p>
-    <p><%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "user-register-form" %> </p>
-    <%= f.submit "登録する", class: "btn btn-primary user-register-btn" %>
-    <%= link_to "キャンセル", goals_path, class: "btn btn-danger user-register-btn" %>
-  <% end %>
+<div class="container">
+  <div class="user-register">
+    <h2>新規登録</h2>
+    <%= form_with model: @user do |f| %>
+      <p><%= f.text_field :name, placeholder: "ユーザー名", class: "user-register-form" %> </p>
+      <p><%= f.text_field :email, placeholder: "メールアドレス", class: "user-register-form" %> </p>
+      <p><%= f.password_field :password, placeholder: "パスワード", class: "user-register-form" %> </p>
+      <p><%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "user-register-form" %> </p>
+      <%= f.submit "登録する", class: "btn btn-primary user-register-btn" %>
+      <%= link_to "キャンセル", goals_path, class: "btn btn-danger user-register-btn" %>
+    <% end %>
+  </div>
 </div>

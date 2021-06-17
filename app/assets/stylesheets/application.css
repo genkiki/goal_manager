@@ -18,13 +18,91 @@
 
 body {
   background-color: aliceblue;
-  margin-top: 30px;
 }
 
 .form-area {
   background-color: white;
   padding: 30px;
 }
+
+.container {
+  margin-top: 70px;
+}
+
+/* ヘッダ */
+
+header {
+  height: 50px;
+  background-color: lightskyblue;
+  margin-bottom: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header-logo, .header-logo-img {
+  height: 50px;
+}
+
+.header-right {
+  display: flex;
+  margin-top: 5px;
+}
+
+.header-user-icon, .user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor :pointer;
+}
+
+.btn-post {
+  display: block;
+  margin-right: 15px;
+  height: 40px;
+}
+
+/*チェックは見えなくする*/
+.hidden_box input {
+  display: none;
+}
+
+/*中身を非表示にしておく*/
+.hidden_box .hidden_show {
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.8s;
+}
+
+/*クリックで中身表示*/
+.hidden_box input:checked ~ .hidden_show {
+  height: auto;
+  opacity: 1;
+}
+
+.header-menu {
+  list-style: none;
+  background-color: white;
+  text-align: left;
+  z-index: 10;
+  padding-inline-start: 0;
+}
+
+.header-menu li {
+  padding: 10px;
+}
+
 
 /* 目標一覧  */
 

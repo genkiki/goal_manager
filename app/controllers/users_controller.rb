@@ -43,6 +43,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    reset_session
+    redirect_to goals_path, notice: "ログアウトしました。"
+  end
+
   private
 
   def user_params

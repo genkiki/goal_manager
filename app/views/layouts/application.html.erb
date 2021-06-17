@@ -11,6 +11,39 @@
   </head>
 
   <body>
+    <header>
+      <div class="header-wrapper">
+        <div class="header-left">
+          <div class="header-logo">
+            <%= link_to goals_path do %>
+              <%= image_tag "site-logo", class: "header-logo-img" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="header-right">
+          <% if session[:user_id] %>
+            <%= link_to "投稿する", new_goal_path, class: "btn btn-primary btn-post" %>
+            <div class="hidden_box">
+              <label for="label1">
+                <div class="header-user-icon">
+                  <%= image_tag "dummy-icon", class: "user-icon" %>
+                </div>
+              </label>
+              <input type="checkbox" id="label1"/>
+              <div class="hidden_show">
+                <ul class="header-menu">
+                  <li> <%= link_to "マイページ", user_path(session[:user_id]) %> </li>
+                  <li> <%= link_to "ログアウト", logout_path %> </li>
+                </ul>
+              </div>
+            </div>
+          <% else %>
+            <%= link_to "新規登録", new_user_path, class: "btn" %>
+            <%= link_to "ログイン", login_path, class: "btn" %>
+          <% end %>
+        </div>
+      </div>
+    </header>
     <%= yield %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

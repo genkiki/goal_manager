@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="user-show-wrapper">
+    <%= render "user-menu" %>
+    <div class="user-info-area">
+        <div class="user-info">
+          <div class="user-image">
+            <%= image_tag "dummy-icon", class: "" %>
+          </div>
+          <p class="user-info-title">アカウント</p>
+          <table class="user-info-table">
+              <tr>
+                  <th>ユーザー名</th>
+                  <td><%= @user.name %></td>
+              </tr>
+              <tr>
+                  <th>メールアドレス</th>
+                  <td><%= @user.email %></td>
+              </tr>
+              <tr>
+                  <th>プロフィール</th>
+                  <td><%= @user.introduce %></td>
+              </tr>
+          </table>
+          <%= link_to "編集", profile_path, method:"post", class: "btn btn-primary user-edit-btn" %>
+        </div>
+    </div>
+  </div>
+</div>

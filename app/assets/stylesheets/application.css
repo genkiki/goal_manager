@@ -185,3 +185,84 @@ header {
   width: 100%;
   margin-bottom: 15px;
 }
+
+/* ユーザー詳細 */
+
+.user-show-wrapper {
+  display: flex;
+}
+
+.user-show-container {
+  display: flex;
+}
+
+.user-menu-list-area {
+  min-width: 15%;
+  border-right: 1px solid gray;
+}
+
+.user-menu-list {
+  display: block;
+  margin-top: 40px;
+  list-style: none;
+}
+
+.user-menu-list li {
+  margin-bottom: 15px;
+}
+
+.user-menu-list li a {
+  text-decoration: none;
+}
+
+.user-info-area {
+  width: 100%;
+  height: 800px;
+  padding: 30px 200px 0px 0px;
+}
+
+.user-image, .user-image img {
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.user-info {
+  max-width: 66%;
+  margin-left: 200px;
+  padding: 20px;
+  background-color: white;
+}
+
+.user-edit-btn {
+  width: 140px;
+  margin-top: 20px;
+}
+
+.user-info-table {
+  width: 100%;
+}
+
+.user-info-table tr {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.user-info-table tr th {
+  text-align: left;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  width: 200px
+}
+
+.user-info-table tr td {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.user-info-table tr th, .user-info-table tr td {
+  padding: 20px 30px 20px 30px;
+}

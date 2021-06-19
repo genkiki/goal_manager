@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
     if session[:user_id] == nil
       redirect_to goals_path
     end
+
   end
 
   def current_user

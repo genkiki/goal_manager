@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   post '/login', to: 'users#signin'
   get '/login_easy', to: 'users#signin_easy'
   get '/logout', to: 'users#logout'
+  get '/follow', to: 'users#follow'
+  get '/follower', to: 'users#follower'
+  get '/profile', to: 'users#show'
+  post '/profile', to: 'users#edit'
   resources :goals, only: [:show, :index, :edit, :destroy, :new, :create]
   resources :tasks, only: [:show, :edit, :destroy]
-  resources :users, only: [:index, :new, :create, :show]
+  resources :users, only: [:index, :new, :create]
 end

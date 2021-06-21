@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="user-show-wrapper">
+    <%= render "user-menu", user_id: @user.id %>
+    <div class="user-info-area">
+        <div class="user-info">
+          <%= form_with model: @user do |f| %>
+            <div class="user-image">
+              <% if @user.image.attached? %>
+                <%= image_tag @user.image, class: "" %>
+              <% else %>
+                <%= image_tag "dummy-icon", class: "" %>
+              <% end %>
+            </div>
+            <p class="user-info-title">アカウント</p>
+            <table class="user-info-table">
+                <tr>
+                    <th>ユーザー名</th>
+                    <td><%= f.text_field :name, value: @user.name %></td>
+                </tr>
+                <tr>
+                  <th>アイコン</th>
+                  <td><%= f.file_field :image %></td>
+                </tr>
+                <tr>
+                    <th>メールアドレス</th>
+                    <td><%= f.text_field :email, value: @user.email %></td>
+                </tr>
+                <tr>
+                    <th>プロフィール</th>
+                    <td><%= f.text_area :introduce, value: @user.introduce %></td>
+                </tr>
+                <tr>
+                  <th>パスワード</th>
+                  <td><%= f.password_field :password %></td>
+                </tr>
+                <tr>
+                  <th>パスワード確認</th>
+                  <td><%= f.password_field :password_confirmation %></td>
+                </tr>
+            </table>
+            <%= f.submit "変更", class: "btn btn-primary btn-submit" %>
+          <% end %>
+          <%= link_to "キャンセル", user_path(@user.id), class: "btn btn-secondary user-edit-btn" %>
+        </div>
+    </div>
+  </div>
+</div>

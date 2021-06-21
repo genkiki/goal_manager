@@ -1,10 +1,14 @@
 <div class="container">
   <div class="user-show-wrapper">
-    <%= render "user-menu" %>
+    <%= render "user-menu", user_id: @user.id %>
     <div class="user-info-area">
         <div class="user-info">
           <div class="user-image">
-            <%= image_tag "dummy-icon", class: "" %>
+            <% if @user.image.attached? %>
+              <%= image_tag @user.image, class: "" %>
+            <% else %>
+              <%= image_tag "dummy-icon", class: "" %>
+            <% end %>
           </div>
           <p class="user-info-title">アカウント</p>
           <table class="user-info-table">
@@ -21,7 +25,7 @@
                   <td><%= @user.introduce %></td>
               </tr>
           </table>
-          <%= link_to "編集", profile_path, method:"post", class: "btn btn-primary user-edit-btn" %>
+          <%= link_to "編集", edit_user_path(@user.id), class: "btn btn-primary user-edit-btn" %>
         </div>
     </div>
   </div>

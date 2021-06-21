@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="user-show-wrapper">
+    <%= render "users/user-menu", user_id: @user.id %>
+    <div class="user-info-area">
+        <div class="user-info">
+          <ul class="follow-list">
+            <%= @follow_users.each do |user| %>
+              <li>
+                <%= user.name %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>

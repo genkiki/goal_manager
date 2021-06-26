@@ -34,10 +34,24 @@ class GoalsController < ApplicationController
     end
   end
 
+  def edit
+    @goal = Goal.find(params[:id])
+    @current_user = User.find(session[:user_id])
+  end
+
+  def update
+    goal = Goal.find(params[:id])
+    if goal.update(goal_params)
+      redirect_to goal_path(params[:id]), notice: "目標を作成しました"
+    else
+      render edit_goal_path(params[:id])
+    end
+  end
+
   private
 
   def goal_params
-    params.require(:goal).permit(:content, :start_date, :end_date, :result,
+    params.require(:goal).permit(:content, :start_date, :end_date, :result, :cause, :improvement,
                                   tasks_attributes: [:id, :user_id, :goal_id, :content, :action, :start_date, :end_date, :status, :_destroy])
   end
 end

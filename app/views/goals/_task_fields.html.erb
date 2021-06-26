@@ -2,7 +2,8 @@
   <div class="task-form-area">
     <div>
       <p> 課題：<%= f.text_field :content, placeholder: "目標に対する課題" %> </p>
-      <p> アクション：<%= f.text_field :action, placeholder: "課題を解決するための行動" %> </p>
+      <p> アクション：
+      <%= f.text_area :action, placeholder: "課題を解決するための行動", class: "form-control" %> </p>
       <p> 開始日：<%= f.datetime_field :start_date %> </p>
       <p> 終了日：<%= f.datetime_field :end_date %> </p>
       <p> ステータス：<%= f.select :status, TaskState.all.collect { |a| [a.state, a.id] } %></p>

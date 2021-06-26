@@ -10,7 +10,7 @@
           <td>
             <% @goal.tasks.each do |task| %>
               <%= link_to task.content, task_path(task.id) %>
-              <span><%= task.status %></span><br>
+              <span><%= task.state_text(task.status) %></span><br>
             <% end %>
           </td>
         </tr>
@@ -32,6 +32,7 @@
       </table>
       <%= link_to "編集", edit_goal_path(@goal.id), class: "btn btn-primary" %>
       <%= link_to "削除", goal_path(@goal.id), method: :delete, class: "btn btn-danger" %>
+      <%= link_to "一覧に戻る", goals_path, class: "btn btn-dark" %>
     </div>
   </div>
 </div>

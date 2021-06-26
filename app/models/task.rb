@@ -8,4 +8,8 @@ class Task < ApplicationRecord
   validates :action, presence: true
   validates :status, presence: true
 
+  def state_text(state_id)
+    GoalState.find(state_id).state
+  end
+
 end

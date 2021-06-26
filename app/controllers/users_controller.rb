@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: session[:user_id])
+    @user = User.find_by(id: params[:id])
   end
 
   def edit
@@ -59,17 +59,21 @@ class UsersController < ApplicationController
   def update
     user = User.find_by(id: session[:user_id])
     if user.update(user_params)
-      logger.debug "更新成功しました！！！！！！！"
       flash[:notice] = "更新成功しました"
       redirect_to user_path(current_user.id)
     else
-      logger.debug "更新失敗しました！！！！！！！"
-      user.errors.full_messages.each do |m|
-        logger.debug m
-      end
       flash[:notice] = "更新失敗しました"
       render user_path(current_user.id)
     end
+  end
+
+  def following
+    @user = User.find_by(id: params[:id])
+  end
+
+  def followers
+    @user = User.find_by(id: params[:id])
+    @follows = Relationship.where(followed_id: params[:id])
   end
 
   private

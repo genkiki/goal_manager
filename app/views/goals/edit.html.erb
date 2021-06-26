@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-sm-10">
+      <h2>目標編集</h2>
+      <div class="form-area">
+        <%= form_with model: @goal do |f| %>
+          <div class="goal-table">
+            <p> 目標：<%= f.text_field :content, placeholder: "達成したいこと", value: @goal.content  %> </p>
+            <p> 開始日：<%= f.datetime_field :start_date, value: @goal.start_date %> </p>
+            <p> 終了日：<%= f.datetime_field :end_date, value: @goal.end_date %> </p>
+            <p> ステータス：<%= f.select :result, GoalState.all.collect { |a| [a.state, a.id] }, value: @goal.result %></p>
+            <div class="under-line"></div>
+
+            <%= f.fields_for :tasks do |t| %>
+              <%= render "task_fields", f: t %>
+            <% end %>
+
+            <div id="detail-association-insertion-point"></div>
+
+            <%= link_to_add_association "+課題を追加", f, :tasks,
+            class: "btn-task-add btn btn-secondary",
+            data: {
+              association_insertion_node: '#detail-association-insertion-point',
+              association_insertion_method: 'after'
+            } %>
+          </div>
+            <p> 原因：
+            <%= f.text_area :cause, placeholder: "失敗または成功した理由", value: @goal.cause, class: "form-control"  %> </p>
+            <p> 改善案：
+            <%= f.text_area :improvement, placeholder: "", value: @goal.improvement, class: "form-control" %> </p>
+          <%= f.submit "作成", class: "btn btn-primary" %>
+          <%= link_to "キャンセル", goal_path(@goal.id), class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -29,6 +29,12 @@ body {
   margin-top: 70px;
 }
 
+.bookmark-btn, .bookmark-btn img {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+}
+
 /* ヘッダ */
 
 header {
@@ -120,6 +126,7 @@ header {
 
 .goal {
   border-bottom: 2px solid aliceblue;
+  display: flex;
 }
 
 /* 目標詳細 */

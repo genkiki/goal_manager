@@ -15,10 +15,23 @@
       <ul class="goals-list">
         <% @goals.each do |goal| %>
           <li class="goal">
-            <%= link_to goal.content, goal_path(goal.id), class: "goal-link goal-title" %>
-            <span class="writer">投稿者：<%= goal.user.name %></span><br>
-            <span class="tag">タグ：<%=  %> </span> <br>
-            <span class="bookmark">ブックマーク数：<%=  %> </span>
+            <div>
+              <%= link_to goal.content, goal_path(goal.id), class: "goal-link goal-title" %>
+              <span class="writer">投稿者：<%= goal.user.name %></span><br>
+              <span class="tag">タグ：<%=  %> </span> <br>
+              <span class="bookmark">ブックマーク数：<%=  %> </span>
+            </div>
+            <div>
+              <% if current_user.bookmark?(goal) %>
+                <%= link_to bookmark_path(goal.id), method: :post, class: "bookmark-btn" do %>
+                  <%= image_tag "icon_bookmark" %>
+                <% end %>
+              <% else %>
+                <%= link_to bookmarks_path(goal_id: goal.id), method: :post, class: "bookmark-btn" do %>
+                  <%= image_tag "icon_unbookmark" %>
+                <% end %>
+              <% end %>
+            </div>
           </li>
         <% end %>
       </ul>

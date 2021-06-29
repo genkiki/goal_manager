@@ -3,6 +3,7 @@ class GoalsController < ApplicationController
     @q = Goal.ransack(params[:q])
     @goals = @q.result(distinct: true).includes(:user).page(params[:page]).per(10).recent
     @states = GoalState.all
+    logger.debug "!!!!!!!#{current_user.bookmark_goals}"
   end
 
   def show

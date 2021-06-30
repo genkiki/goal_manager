@@ -48,6 +48,14 @@ class GoalsController < ApplicationController
     end
   end
 
+  def ranking
+    bookmarks = Bookmark.group("goal_id").order("count_id desc").count("id")
+    @goals = []
+    bookmarks.keys.each do |data|
+      @goals << Goal.find(data)
+    end
+  end
+
   private
 
   def goal_params

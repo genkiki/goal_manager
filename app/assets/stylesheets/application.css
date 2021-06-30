@@ -29,6 +29,14 @@ body {
   margin-top: 70px;
 }
 
+.bookmark-btn, .bookmark-btn img {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: baseline;
+  margin-left: 15px;
+}
+
 /* ヘッダ */
 
 header {
@@ -120,8 +128,8 @@ header {
 
 .goal {
   border-bottom: 2px solid aliceblue;
+  display: flex;
 }
-
 /* 目標詳細 */
 
 .goal-title {
@@ -313,4 +321,9 @@ header {
   height: auto;
   border-radius: 50%;
   margin-right: 10px;
+}
+
+.ranking-num h3{
+  margin-top: 30px;
+  margin-right: 15px;
 }

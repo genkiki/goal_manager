@@ -9,6 +9,8 @@ class User < ApplicationRecord
                                   foreign_key: "followed_id",
                                   dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_goals, through: :bookmarks, source: :goal
 
   has_secure_password
   validates :name, presence: true, uniqueness: true
@@ -27,5 +29,9 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def bookmark?(goal)
+    bookmark_goals.include?(goal)
   end
 end

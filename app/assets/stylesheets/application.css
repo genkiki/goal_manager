@@ -130,11 +130,9 @@ header {
   border-bottom: 2px solid aliceblue;
   display: flex;
 }
-
 /* 目標詳細 */
 
 .goal-title {
-  display: inline-block;
   font-size: 32px;
 }
 
@@ -323,4 +321,9 @@ header {
   height: auto;
   border-radius: 50%;
   margin-right: 10px;
+}
+
+.ranking-num h3{
+  margin-top: 30px;
+  margin-right: 15px;
 }

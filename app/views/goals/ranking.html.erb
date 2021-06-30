@@ -3,13 +3,7 @@
     <div class="col-lg-2 col-sm-12">
     </div>
     <div class="col-lg-8 col-sm-12">
-      <%= search_form_for @q do |f| %>
-        <%= f.label :content_cont, '内容' %>
-        <%= f.search_field :content_cont %>
-        <%= f.label :state, '結果' %>
-        <%= f.collection_select :result_eq, @states, :id, :state %>
-        <%= f.submit class: "btn btn-outline-primary" %>
-      <% end %>
+      <h2>ランキング</h2>
       <%= paginate @goals %>
       <%= page_entries_info @goals %>
       <ul class="goals-list">
@@ -20,6 +14,17 @@
               <span class="writer">投稿者：<%= goal.user.name %></span><br>
               <span class="tag">タグ：<%=  %> </span> <br>
               <span class="bookmark">ブックマーク数：<%=  %> </span>
+            </div>
+            <div>
+              <% if current_user.bookmark?(goal) %>
+                <%= link_to bookmark_path(goal.id), class: "bookmark-btn" do %>
+                  <%= image_tag "icon_bookmark" %>
+                <% end %>
+              <% else %>
+                <%= link_to bookmarks_path(goal_id: goal.id), method: :post, class: "bookmark-btn" do %>
+                  <%= image_tag "icon_unbookmark" %>
+                <% end %>
+              <% end %>
             </div>
           </li>
         <% end %>

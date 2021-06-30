@@ -3,7 +3,18 @@
     <div class="col-lg-8 col-sm-10">
       <table class="goal-table">
         <tr>
-          <p class="goal-title"> <%= @goal.content %> </p>
+          <span class="goal-title"> <%= @goal.content %> </span>
+          <% if session[:user_id] %>
+            <% if current_user.bookmark?(@goal) %>
+              <%= link_to bookmark_path(@goal.id), method: :delete, class: "bookmark-btn" do %>
+                <%= image_tag "icon_bookmark" %>
+              <% end %>
+            <% else %>
+              <%= link_to bookmarks_path(goal_id: @goal.id), method: :post, class: "bookmark-btn" do %>
+                <%= image_tag "icon_unbookmark" %>
+              <% end %>
+            <% end %>
+          <% end %>
         </tr>
         <tr>
           <th>課題</th>

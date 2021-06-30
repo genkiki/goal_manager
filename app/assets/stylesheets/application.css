@@ -30,9 +30,11 @@ body {
 }
 
 .bookmark-btn, .bookmark-btn img {
+  display: inline-block;
   width: 30px;
   height: 30px;
-  margin-top: 10px;
+  vertical-align: baseline;
+  margin-left: 15px;
 }
 
 /* ヘッダ */
@@ -132,6 +134,7 @@ header {
 /* 目標詳細 */
 
 .goal-title {
+  display: inline-block;
   font-size: 32px;
 }
 

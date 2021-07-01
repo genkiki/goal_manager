@@ -14,7 +14,6 @@
             <div>
               <%= link_to goal.content, goal_path(goal.id), class: "goal-link goal-title" %>
               <span class="writer">投稿者：<%= goal.user.name %></span><br>
-              <span class="tag">タグ：<%=  %> </span> <br>
               <span class="bookmark">ブックマーク数：<%= goal.bookmarks.count %> </span>
             </div>
           </li>

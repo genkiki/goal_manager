@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def signin_easy
     user = User.find(1)
 
-    if user&.authenticate("test")
+    if user&.authenticate("testtest")
       session[:user_id] = user.id
       redirect_to goals_path, notice: "ログインしました。"
     else
@@ -68,12 +68,28 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
   end
 
   def followers
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     @follows = Relationship.where(followed_id: params[:id])
+  end
+
+  def setting
+    @user = User.find(session[:user_id])
+  end
+
+  def destroy
+    user = User.find(session[:user_id])
+    if user.destroy
+      session[:user_id] = nil
+      flash[:notice] = "アカウント削除しました"
+      redirect_to goals_path
+    else
+      flash[:notice] = "アカウント削除できませんでした"
+      render user_path(current_user.id)
+    end
   end
 
   private

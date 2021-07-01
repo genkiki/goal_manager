@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="user-show-wrapper">
+    <%= render "user-menu", user_id: @user.id %>
+    <div class="user-info-area">
+      <div class="user-info">
+        <div class="list-group">
+          <%= link_to "アカウント削除", user_path(@user.id), method: :delete, class: "list-group-item list-group-item-action", data: { confirm: "ユーザーアカウントを削除します。よろしいですか？"} %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :tasks, only: [:show, :edit, :destroy]
   resources :users do
     member do
-      get :following, :followers, :bookmarks
+      get :following, :followers, :bookmarks, :setting
     end
   end
   resources :relationships, only: [:create, :destroy]

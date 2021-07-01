@@ -6,7 +6,7 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @goal = Goal.find(params[:id])
+    @goal = Goal.includes(comments: :user).find(params[:id])
     @result = GoalState.find(@goal.result).state
   end
 

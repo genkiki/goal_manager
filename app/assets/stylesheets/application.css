@@ -144,6 +144,22 @@ header {
   padding: 15px;
 }
 
+.btn-area {
+  margin-top: 20px;
+}
+
+.comment-title {
+  margin-top: 30px;
+}
+
+.comment-area {
+  background-color: white;
+  padding: 15px;
+}
+
+.comment-list {
+  list-style: none;
+}
 
 /* 目標登録 */
 .task-form-area {

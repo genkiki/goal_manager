@@ -3,6 +3,7 @@ class Goal < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :tasks
   accepts_nested_attributes_for :tasks, allow_destroy: true
+  has_many :comments
 
   validates :user_id, presence: true
   validates :content, presence: true

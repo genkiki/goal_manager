@@ -47,9 +47,36 @@
           <td> <%= @goal.improvement %> </td>
         </tr>
       </table>
+      <div class="btn-area">
       <%= link_to "編集", edit_goal_path(@goal.id), class: "btn btn-primary" %>
       <%= link_to "削除", goal_path(@goal.id), method: :delete, class: "btn btn-danger" %>
       <%= link_to "一覧に戻る", goals_path, class: "btn btn-dark" %>
+      </div>
+      <p class="comment-title">コメント(<%= @goal.comments.count %>)</p>
+      <div class="comment-area">
+        <% @goal.comments.each do |comment| %>
+          <ul class="comment-list">
+            <li class="comment">
+              <div><%= link_to comment.user.name, user_path(comment.user.id) %></div>
+              <div><%= comment.comment %></div>
+              <div>
+                <%# 編集機能作成予定 %>
+                <%= link_to "削除", comment_path(comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？"}  %>
+              </div>
+            </li>
+          </ul>
+        <% end %>
+        <% if session[:user_id] %>
+          <div class="comment-form">
+            <%= form_with model: Comment.new do |f| %>
+              <%= f.text_area :comment, class: "form-control", placeholder: "コメントを記入してください" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :goal_id, value: @goal.id %>
+              <%= f.submit "投稿する", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

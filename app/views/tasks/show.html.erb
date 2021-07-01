@@ -14,7 +14,7 @@
           <% if @task.start_date.blank? && @task.end_date.blank? %>
             <td>登録なし</td>
           <% else %>
-            <td> <%= @task.start_date %> 〜 <%= @task.end_date %> </td>
+            <td> <%= @task.start_date.strftime("%Y年%m月%d日") %> 〜 <%= @task.end_date.strftime("%Y年%m月%d日") %> </td>
           <% end %>
         </tr>
         <tr>

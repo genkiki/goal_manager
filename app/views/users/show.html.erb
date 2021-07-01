@@ -1,6 +1,6 @@
 <div class="container">
   <div class="user-show-wrapper">
-    <%= render "user-menu", user_id: @user.id %>
+    <%= render "user-menu", user_id: current_user.id %>
     <div class="user-info-area">
         <div class="user-info">
           <div class="user-image">
@@ -22,7 +22,6 @@
               </tr>
           </table>
           <% if session[:user_id] == @user.id %>
-            <%= session[:id] %>
             <%= link_to "編集", edit_user_path(@user.id), class: "btn btn-primary user-edit-btn" %>
           <% end %>
         </div>

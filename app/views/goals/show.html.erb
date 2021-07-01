@@ -3,6 +3,12 @@
     <div class="col-lg-8 col-sm-10">
       <table class="goal-table">
         <tr>
+          <span class="writer">
+            投稿者：
+            <%= link_to user_path(@goal.user.id) do %>
+            <%= @goal.user.name %>
+            <% end %>
+          </span><br>
           <span class="goal-title"> <%= @goal.content %> </span>
           <% if session[:user_id] %>
             <% if current_user.bookmark?(@goal) %>

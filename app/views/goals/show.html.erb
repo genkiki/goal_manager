@@ -48,8 +48,10 @@
         </tr>
       </table>
       <div class="btn-area">
-      <%= link_to "編集", edit_goal_path(@goal.id), class: "btn btn-primary" %>
-      <%= link_to "削除", goal_path(@goal.id), method: :delete, class: "btn btn-danger" %>
+      <% if session[:user_id] == @goal.user.id %>
+        <%= link_to "編集", edit_goal_path(@goal.id), class: "btn btn-primary" %>
+        <%= link_to "削除", goal_path(@goal.id), method: :delete, class: "btn btn-danger" %>
+      <% end %>
       <%= link_to "一覧に戻る", goals_path, class: "btn btn-dark" %>
       </div>
       <p class="comment-title">コメント(<%= @goal.comments.count %>)</p>

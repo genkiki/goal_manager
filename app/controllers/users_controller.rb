@@ -96,6 +96,11 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def favorites
+    @user = User.find(session[:user_id])
+    @goals = current_user.bookmark_goals.recent
+  end
+
   private
 
   def user_params

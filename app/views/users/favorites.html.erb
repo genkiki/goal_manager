@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="user-show-wrapper">
+    <%= render "users/user-menu", user_id: @user.id %>
+    <div class="user-info-area">
+      <div class="user-info">
+        <%= render "goals/goals_list", goals: @user.bookmark_goals.recent %>
+      </div>
+    </div>
+  </div>
+</div>

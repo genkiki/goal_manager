@@ -13,11 +13,11 @@ class GoalsController < ApplicationController
   def new
     @goal = Goal.new
     @task = @goal.tasks.build
-    @current_user = User.find(1)
+    @current_user = User.find(session[:user_id])
   end
 
   def create
-    @current_user = User.find(1)
+    @current_user = User.find(session[:user_id])
     @goal = @current_user.goals.new(goal_params)
 
     if @goal.save

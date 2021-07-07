@@ -129,11 +129,14 @@ header {
 .goal {
   border-bottom: 2px solid aliceblue;
   display: flex;
+  padding-bottom: 10px;
 }
+
 /* 目標詳細 */
 
 .goal-title {
   font-size: 32px;
+  display: block;
 }
 
 .goal-table, .task-table {

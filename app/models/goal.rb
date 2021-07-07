@@ -9,7 +9,7 @@ class Goal < ApplicationRecord
   validates :content, presence: true
   validates :result, presence: true
 
-  scope :recent, -> { order(created_at: :desc) }
+  scope :recent, -> { order(updated_at: :desc) }
 
   def self.ransackable_attributes(auth_object = nil)
     ['content', 'result', 'created_at']

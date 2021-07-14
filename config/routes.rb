@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   get '/login_easy', to: 'users#signin_easy'
   get '/logout', to: 'users#logout'
   get '/ranking', to: 'goals#ranking'
-  resources :goals
+
+  resources :goals do
+    member do
+      get :following
+    end
+  end
   resources :tasks, only: [:show, :edit, :destroy]
   resources :users do
     member do

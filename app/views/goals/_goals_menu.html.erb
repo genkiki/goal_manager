@@ -1,0 +1,7 @@
+<div class="col-lg-2 col-sm-12">
+  <p><%= link_to "記事一覧", goals_path %></p>
+  <p><%= link_to "ランキング", ranking_path %></p>
+  <% if session[:user_id] %>
+    <p><%= link_to "フォロー記事", following_goal_path(session[:user_id]) %></p>
+  <% end %>
+</div>

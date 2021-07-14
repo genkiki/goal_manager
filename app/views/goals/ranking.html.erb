@@ -1,9 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-2 col-sm-12">
-    <p><%= link_to "記事一覧", goals_path %></p>
-    <p><%= link_to "ランキング", ranking_path %></p>
-    </div>
+    <%= render "goals_menu" %>
     <div class="col-lg-8 col-sm-12">
       <ul class="goals-list">
         <% @goals.each_with_index do |goal, i| %>

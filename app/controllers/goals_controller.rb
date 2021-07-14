@@ -56,6 +56,18 @@ class GoalsController < ApplicationController
     end
   end
 
+  def following
+    user = User.find(session[:user_id])
+    logger.debug "user_id:#{user.id}"
+    @goals = []
+      logger.debug "user.following:#{user.following}"
+    user.following.each do |follow_user|
+      follow_user.goals.each do |goal|
+        @goals.push(goal)
+      end
+    end
+  end
+
   private
 
   def goal_params

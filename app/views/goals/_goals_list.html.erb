@@ -1,17 +1,21 @@
 <ul class="goals-list">
-  <% goals.each do |goal| %>
-    <li class="goal">
-      <div>
-        <%= link_to goal.content, goal_path(goal.id), class: "goal-link goal-title" %>
-        <span class="writer">
-          投稿者：
-          <%= link_to user_path(goal.user.id) do %>
-          <%= goal.user.name %>
-          <% end %>
-        </span><br>
-        <span class="bookmark">ブックマーク数：<%= goal.bookmarks.count %> </span><br>
-        <span >最終更新日：<%= goal.updated_at.strftime("%Y年%m月%d日") %> </span>
-      </div>
-    </li>
+  <% if goals.size == 0 %>
+    <p>記事がありません</p>
+  <% else %>
+    <% goals.each do |goal| %>
+      <li class="goal">
+        <div>
+          <%= link_to goal.content, goal_path(goal.id), class: "goal-link goal-title" %>
+          <span class="writer">
+            投稿者：
+            <%= link_to user_path(goal.user.id) do %>
+            <%= goal.user.name %>
+            <% end %>
+          </span><br>
+          <span class="bookmark">ブックマーク数：<%= goal.bookmarks.count %> </span><br>
+          <span >最終更新日：<%= goal.updated_at.strftime("%Y年%m月%d日") %> </span>
+        </div>
+      </li>
+    <% end %>
   <% end %>
 </ul>

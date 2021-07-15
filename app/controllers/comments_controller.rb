@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
+    goal = Goal.find(params[:goal_id])
     if comment.save
+      goal.create_notification_comment!(current_user, comment.id)
       redirect_to goal_path(comment.goal_id)
     else
       render goal_path(comment.goal_id)

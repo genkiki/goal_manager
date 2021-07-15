@@ -101,6 +101,13 @@ class UsersController < ApplicationController
     @goals = current_user.bookmark_goals.recent
   end
 
+  def notifications
+    @notifications = current_user.passive_notifications.includes(:visitor, :goal).page(params[:page]).per(20)
+    @notifications.where(check: false).each do |notification|
+      notification.update_attributes(check: true)
+    end
+  end
+
   private
 
   def user_params

@@ -5,7 +5,8 @@
       <li><%= link_to "フォロー", following_user_path(user_id), class: "text-primary" %></li>
       <li><%= link_to "フォロワー", followers_user_path(user_id), class: "text-primary" %></li>
       <% if session[:user_id] == params[:id].to_i %>
-        <li><%= link_to "ブックマーク", favorites_user_path, class: "text-primary" %></li>
+        <li><%= link_to "ブックマーク", favorites_user_path(user_id), class: "text-primary" %></li>
+        <li><%= link_to "通知", notifications_user_path(user_id), class: "text-primary" %></li>
       <% end %>
   </ul>
 </div>

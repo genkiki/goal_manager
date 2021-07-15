@@ -1,8 +1,10 @@
 class BookmarksController < ApplicationController
   def create
     bookmark = current_user.bookmarks.new(goal_id: params[:goal_id])
+    goal = Goal.find(params[:goal_id])
     if bookmark.save
       flash[:notice] = "ブックマーク登録しました"
+      goal.create_notification_bookmark!(current_user)
     else
       flash[:notice] = "ブックマーク登録失敗しました"
     end

@@ -3,6 +3,7 @@
   <head>
     <title>GoalManager</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -27,6 +28,11 @@
               <label for="label1">
                 <div class="header-user-icon">
                   <%= image_tag "dummy-icon", class: "user-icon" %>
+                  <% if unchecked_notifications.any? %>
+                    <span class="fa-stack">
+                      <i class="fas fa-circle n-circle fa-stack-1x user-icon-notification"></i>
+                    </span>
+                  <% end %>
                 </div>
               </label>
               <input type="checkbox" id="label1"/>
@@ -34,6 +40,14 @@
                 <ul class="header-menu">
                   <li> <%= link_to "マイページ", user_path(current_user.id) %> </li>
                   <li> <%= link_to "設定", setting_user_path(current_user.id) %> </li>
+                  <li>
+                    <%= link_to "通知", notifications_user_path(current_user.id) %>
+                    <% if unchecked_notifications.any? %>
+                      <span class="fa-stack">
+                        <i class="fas fa-circle n-circle fa-stack-1x"></i>
+                      </span>
+                    <% end %>
+                  </li>
                   <li> <%= link_to "ログアウト", logout_path %> </li>
                 </ul>
               </div>

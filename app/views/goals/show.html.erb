@@ -60,11 +60,27 @@
           <ul class="comment-list">
             <li class="comment">
               <div><%= link_to comment.user.name, user_path(comment.user.id) %></div>
-              <div><%= comment.comment %></div>
-              <div>
-                <%# 編集機能作成予定 %>
-                <%= link_to "削除", comment_path(comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？"}  %>
+              <div id="js-comment-<%= comment.id %>">
+                <p id="js-comment-label-<%= comment.id %>"><%= comment.comment %></p>
+                <p id="js-comment-post-error-<%= comment.id %>" class="text-danger"></p>
+                <textarea style="display: none;" id="js-textarea-comment-<%= comment.id %>" class="form-control comment-post-error"><%= comment.comment %></textarea>
+                <div id="js-comment-button-<%= comment.id %>" style="display: none;">
+                  <button data-cancel-id=<%= comment.id %> type="button" class="btn btn-light comment-cancel-button">キャンセル</button>
+                  <button data-update-id=<%= comment.id%> type="submit" class="btn btn-success comment-update-button">更新</button>
+                </div>
               </div>
+              <% if comment.user.id == session[:user_id] %>
+              <% logger.debug comment.user.id %>
+              <% logger.debug session[:user_id] %>
+                <div>
+                  <span data-comment-id=<%= comment.id %> class="js-edit-comment-button">
+                    <i class="fas fa-edit text-primary"></i>
+                  </span>
+                  <%= link_to comment_path(comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？"} do %>
+                    <i class="fas fa-trash-alt text-primary"></i>
+                  <% end %>
+                </div>
+              <% end %>
             </li>
           </ul>
         <% end %>

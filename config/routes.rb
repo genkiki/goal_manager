@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   resources :tasks, only: [:show, :edit, :destroy]
   resources :users do
     member do
-      get :following, :followers, :bookmarks, :setting, :posts, :favorites
+      get :following, :followers, :bookmarks, :setting, :posts, :favorites, :notifications
     end
   end
   resources :relationships, only: [:create, :destroy]
   resources :bookmarks, only: [:create, :destroy]
-  resources :comments, only: [:create, :edit, :destroy]
+  resources :comments, only: [:create, :destroy, :update]
 end

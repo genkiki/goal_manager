@@ -67,10 +67,17 @@ header {
 }
 
 .header-user-icon, .user-icon {
+  position: relative;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor :pointer;
+}
+
+.user-icon-notification {
+  position: absolute;
+  top: -22px;
+  left: 15px;
 }
 
 .btn-post {
@@ -350,4 +357,32 @@ header {
 .user-setting-list {
   text-decoration: none;
   list-style: none;
+}
+
+/* 通知画面 */
+
+.info-area {
+  background-color: white;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.notification-area {
+  display: inline;
+}
+
+.notification {
+  padding: 10px;
+}
+
+.notification:not(:last-child) {
+  border-bottom: 1px solid gray;
+}
+
+.n-circle {
+  color: red;
+}
+
+.far {
+  font-size: 1.5em;
 }

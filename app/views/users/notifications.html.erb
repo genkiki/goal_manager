@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="user-show-wrapper">
+    <%= render "user-menu", user_id: current_user.id %>
+    <div class="user-info-area">
+      <div class="user-info">
+        <div class="list-group">
+          <div class="notificaion-area">
+            <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+            <% if notifications.exists? %>
+              <% notifications.each do |notification| %>
+                <div class="notification">
+                  <% visitor = notification.visitor %>
+                  <span> <%= notification.created_at.strftime("%Y年%m月%d日") %> <%= link_to "#{visitor.name}", user_path(visitor.id) %>さんが</span>
+                  <% goal = notification.goal %>
+                  <% case notification.action %>
+                    <% when "follow" then %>
+                      <span>あなたをフォローしました</span>
+                    <% when "bookmark" then %>
+                      <span><%= link_to "あなたの記事", goal_path(goal.id) %>をブックマークしました</span>
+                    <% when "comment" then %>
+                      <span><%= link_to "あなたの記事", goal_path(goal.id) %>にコメントしました</span>
+                  <% end %>
+                </div>
+              <% end %>
+            <% else %>
+              <span>通知はありません</span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

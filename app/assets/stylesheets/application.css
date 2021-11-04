@@ -236,7 +236,6 @@ header {
 }
 
 .user-menu-list {
-  display: block;
   margin-top: 40px;
   list-style: none;
 }
@@ -246,6 +245,37 @@ header {
 }
 
 .user-menu-list li a {
+  text-decoration: none;
+}
+
+@media(max-width: 1080px) {
+  .user-menu-list {
+    display: none;
+  }
+  .user-menu-list-sp {
+    display: block;
+  }
+}
+
+@media(min-width: 1081px) {
+  .user-menu-list {
+    display: block;
+  }
+  .user-menu-list-sp {
+    display: none;
+  }
+}
+
+.user-menu-list-sp {
+  margin-top: 40px;
+  list-style: none;
+}
+
+.user-menu-list-sp li {
+  margin-bottom: 15px;
+}
+
+.user-menu-list-sp li a {
   text-decoration: none;
 }
 
@@ -264,7 +294,8 @@ header {
 
 .user-info {
   max-width: 66%;
-  margin-left: 200px;
+  min-width: 450px;
+  margin-left: 20%;
   padding: 20px;
   background-color: white;
 }
@@ -297,9 +328,23 @@ header {
   font-weight: 400;
 }
 
-.user-info-table tr th, .user-info-table tr td {
-  padding: 20px 30px 20px 30px;
+/* @media(max-width: 1080px) {
+  .user-info-table tr th, .user-info-table tr td {
+    padding: 10px 15px 10px 15px;
+  }
 }
+
+@media(min-width: 1081px) {
+  .user-info-table tr th, .user-info-table tr td {
+    padding: 20px 30px 20px 30px;
+  }
+} */
+
+.user-info-table tr th, .user-info-table tr td {
+  padding: 10px 15px 10px 15px;
+}
+
+
 
 .btn-submit {
   margin-top: 15px;

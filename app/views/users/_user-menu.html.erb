@@ -1,12 +1,79 @@
 <div class="user-menu-list-area">
   <ul class="user-menu-list">
-      <li><%= link_to "アカウント", user_path(user_id), class: "text-primary" %></li>
-      <li><%= link_to "投稿記事", posts_user_path(user_id), class: "text-primary" %></li>
-      <li><%= link_to "フォロー", following_user_path(user_id), class: "text-primary" %></li>
-      <li><%= link_to "フォロワー", followers_user_path(user_id), class: "text-primary" %></li>
-      <% if session[:user_id] == params[:id].to_i %>
-        <li><%= link_to "ブックマーク", favorites_user_path(user_id), class: "text-primary" %></li>
-        <li><%= link_to "通知", notifications_user_path(user_id), class: "text-primary" %></li>
+    <li>
+      <%= link_to user_path(user_id), class: "text-primary" do %>
+        <i class="fas fa-user"></i>
+        <span>
+          アカウント
+        </span>
       <% end %>
+    </li>
+    <li>
+      <%= link_to  posts_user_path(user_id), class: "text-primary" do %>
+        <i class="fas fa-file"></i>
+        投稿記事
+      <% end %>
+    </li>
+    <li>
+      <%= link_to following_user_path(user_id), class: "text-primary" do %>
+        <i class="fas fa-heart"></i>
+        フォロー
+      <% end %>
+    </li>
+    <li>
+      <%= link_to followers_user_path(user_id), class: "text-primary" do %>
+        <i class="fas fa-hand-holding-heart"></i>
+        フォロワー
+      <% end %>
+    </li>
+    <% if session[:user_id] == params[:id].to_i %>
+      <li>
+        <%= link_to favorites_user_path(user_id), class: "text-primary" do %>
+          <i class="fas fa-bookmark"></i>
+          ブックマーク
+        <% end %>
+      </li>
+      <li>
+        <%= link_to notifications_user_path(user_id), class: "text-primary" do %>
+          <i class="fas fa-bell"></i>
+          通知
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <ul class="user-menu-list-sp">
+    <li>
+      <%= link_to user_path(user_id), class: "text-primary" do %>
+        <i class="fas fa-user"></i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to  posts_user_path(user_id), class: "text-primary" do %>
+        <i class="fas fa-file"></i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to following_user_path(user_id), class: "text-primary" do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to followers_user_path(user_id), class: "text-primary" do %>
+        <i class="fas fa-hand-holding-heart"></i>
+      <% end %>
+    </li>
+    <% if session[:user_id] == params[:id].to_i %>
+      <li>
+        <%= link_to favorites_user_path(user_id), class: "text-primary" do %>
+          <i class="fas fa-bookmark"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to notifications_user_path(user_id), class: "text-primary" do %>
+          <i class="fas fa-bell"></i>
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </div>

@@ -1,3 +1,3 @@
 class TaskState < ApplicationRecord
-  validates :state presence: true
+  validates :state, presence: true
 end

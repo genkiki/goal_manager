@@ -44,15 +44,15 @@ RSpec.describe User, type: :model do
 
     context "重複不可の情報が重複している場合" do
       it "名前が重複していると無効" do
-        user1 = FactoryBot.create(:user, email: "test1")
-        user2 = FactoryBot.build(:user, email: "test2")
+        user1 = FactoryBot.create(:user, name: "tester", email: "test1")
+        user2 = FactoryBot.build(:user, name: "tester", email: "test2")
         expect(user1).to be_valid
         expect(user2).not_to be_valid
       end
 
       it "メールアドレスが重複していると無効" do
-        user1 = FactoryBot.create(:user, name: "test1")
-        user2 = FactoryBot.build(:user, name: "test2")
+        user1 = FactoryBot.create(:user, name: "test1", email: "tester")
+        user2 = FactoryBot.build(:user, name: "test2", email: "tester")
         expect(user1).to be_valid
         expect(user2).not_to be_valid
       end

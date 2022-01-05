@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature "Goals", type: :feature do
+  let(:user) { FactoryBot.create(:user) }
+  let(:goal) { FactoryBot.create(:goal) }
+
   scenario "ユーザーが新しい目標を作成する" do
-    user = FactoryBot.create(:user)
-    visit "/"
-    click_link "ログイン"
-    fill_in "login-email", with: user.email
-    fill_in "login-password", with: user.password
-    click_button "login-submit"
+    sign_in_as user
 
     expect {
       click_link "投稿する"
@@ -23,12 +21,7 @@ RSpec.feature "Goals", type: :feature do
   end
 
   scenario "ユーザーが既存の目標を編集する" do
-    goal = FactoryBot.create(:goal)
-    visit "/"
-    click_link "ログイン"
-    fill_in "login-email", with: goal.user.email
-    fill_in "login-password", with: goal.user.password
-    click_button "login-submit"
+    sign_in_as goal.user
 
     click_link "test"
     click_link "編集"
@@ -38,12 +31,7 @@ RSpec.feature "Goals", type: :feature do
   end
 
   scenario "ユーザーが既存の目標を削除する" do
-    goal = FactoryBot.create(:goal)
-    visit "/"
-    click_link "ログイン"
-    fill_in "login-email", with: goal.user.email
-    fill_in "login-password", with: goal.user.password
-    click_button "login-submit"
+    sign_in_as goal.user
 
     click_link "test"
     click_link "削除"

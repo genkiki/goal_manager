@@ -23,6 +23,7 @@ class GoalsController < ApplicationController
     if @goal.save
       redirect_to "/", notice: "目標を作成しました"
     else
+      flash[:notice] = @goal.errors.full_messages
       render new_goal_path
     end
   end

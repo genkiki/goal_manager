@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, length: { minimum: 8 }
+  validates :password, presence: true, length: { minimum: 8 }, on: :create
 
   has_one_attached :image
 

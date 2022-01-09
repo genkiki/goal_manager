@@ -12,11 +12,11 @@
           <span class="goal-title"> <%= @goal.content %> </span>
           <% if session[:user_id] %>
             <% if current_user.bookmark?(@goal) %>
-              <%= link_to bookmark_path(@goal.id), method: :delete, class: "bookmark-btn" do %>
+              <%= link_to bookmark_path(@goal.id), method: :delete, class: "bookmark-btn", id: "remove-bookmark" do %>
                 <%= image_tag "icon_bookmark" %>
               <% end %>
             <% else %>
-              <%= link_to bookmarks_path(goal_id: @goal.id), method: :post, class: "bookmark-btn" do %>
+              <%= link_to bookmarks_path(goal_id: @goal.id), method: :post, class: "bookmark-btn", id: "add-bookmark" do %>
                 <%= image_tag "icon_unbookmark" %>
               <% end %>
             <% end %>

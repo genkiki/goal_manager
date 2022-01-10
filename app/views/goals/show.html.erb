@@ -73,10 +73,10 @@
               <% logger.debug comment.user.id %>
               <% logger.debug session[:user_id] %>
                 <div>
-                  <span data-comment-id=<%= comment.id %> class="js-edit-comment-button">
+                  <span data-comment-id=<%= comment.id %> class="js-edit-comment-button" id="edit-comment" >
                     <i class="fas fa-edit text-primary"></i>
                   </span>
-                  <%= link_to comment_path(comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？"} do %>
+                  <%= link_to comment_path(comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？"}, id: "remove-comment" do %>
                     <i class="fas fa-trash-alt text-primary"></i>
                   <% end %>
                 </div>
@@ -90,7 +90,7 @@
               <%= f.text_area :comment, class: "form-control", placeholder: "コメントを記入してください" %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.hidden_field :goal_id, value: @goal.id %>
-              <%= f.submit "投稿する", class: "btn btn-primary" %>
+              <%= f.submit "投稿する", class: "btn btn-primary", id: "add-comment" %>
             <% end %>
           </div>
         <% end %>

@@ -39,10 +39,12 @@ class Goal < ApplicationRecord
   end
 
   def save_notification_comment!(current_user, comment)
+    goal = Goal.find(comment.goal_id)
     notification = current_user.active_notifications.new(
       goal_id: id,
       comment_id: comment.id,
-      visited_id: comment.user_id,
+      visited_id: goal.user_id,
+      visitor_id: current_user.id,
       action: 'comment'
     )
     if notification.visitor_id == notification.visited_id

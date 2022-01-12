@@ -69,6 +69,12 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find(params[:id])
+    following_relationships = Relationship.select(:followed_id).where(follower_id: @user.id)
+    tmp = []
+    following_relationships.each do |data|
+      tmp << data.followed_id
+    end
+    @following = User.find(tmp)
   end
 
   def followers

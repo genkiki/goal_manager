@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
     logger.debug "params[:user_id]:#{params[:user_id]}"
     comment = Comment.new(comment_params)
     goal = Goal.find(comment.goal_id)
-    # goal = comment.goal
     logger.debug "goal.id:#{goal.id}"
 
     if comment.save

@@ -5,7 +5,7 @@
       <div class="form-area">
         <%= form_with model: @goal do |f| %>
           <div class="goal-table">
-            <p> 目標：<%= f.text_field :content, placeholder: "達成したいこと", value: @goal.content  %> </p>
+            <p> 目標：<%= f.text_field :content, placeholder: "達成したいこと", value: @goal.content, id: "goal-edit-goal"  %> </p>
             <p> 開始日：<%= f.datetime_field :start_date, value: @goal.start_date %> </p>
             <p> 終了日：<%= f.datetime_field :end_date, value: @goal.end_date %> </p>
             <p> ステータス：<%= f.select :result, GoalState.all.collect { |a| [a.state, a.id] }, value: @goal.result %></p>

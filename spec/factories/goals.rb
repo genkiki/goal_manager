@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :goal do
     content { "test" }
-    result { "未達成" }
+    result { 1 }
     cause { "test" }
     improvement { "test" }
     association :user

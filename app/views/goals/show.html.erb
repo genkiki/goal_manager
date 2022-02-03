@@ -73,9 +73,9 @@
               <% logger.debug comment.user.id %>
               <% logger.debug session[:user_id] %>
                 <div>
-                  <span data-comment-id=<%= comment.id %> class="js-edit-comment-button" id="edit-comment" >
+                  <a data-comment-id=<%= comment.id %> class="js-edit-comment-button" id="edit-comment">
                     <i class="fas fa-edit text-primary"></i>
-                  </span>
+                  </a>
                   <%= link_to comment_path(comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？"}, id: "remove-comment" do %>
                     <i class="fas fa-trash-alt text-primary"></i>
                   <% end %>

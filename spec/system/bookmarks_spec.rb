@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Bookmarks", type: :feature do
+RSpec.describe "Bookmarks", type: :system do
   let(:user) { FactoryBot.create(:user) }
   # let(:goal) { FactoryBot.create(:goal) }
 
@@ -16,7 +16,7 @@ RSpec.feature "Bookmarks", type: :feature do
     expect(page).to have_content goal.content
   end
 
-  scenario "ブックマーク解除した記事は一覧に表示されない" do
+  scenario "ブックマーク解除した記事は一覧に表示されない test" do
     goal = FactoryBot.create(:goal)
     sign_in_as user
     click_link goal.content

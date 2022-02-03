@@ -7,6 +7,9 @@ class GoalsController < ApplicationController
 
   def show
     @goal = Goal.includes(comments: :user).find(params[:id])
+    GoalState.all.each do |data|
+      logger.debug "data:#{data}"
+    end
     @result = GoalState.find(@goal.result).state
   end
 

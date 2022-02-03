@@ -40,7 +40,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop-airbnb'
-  gem 'rspec-rails', '~> 3.6.0'
+  gem 'rspec-rails', '~> 3.8.0'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails', '~> 4.10.0'
   gem 'bullet'
@@ -48,6 +48,7 @@ group :development, :test do
   gem 'kaminari'
   gem 'cocoon'
   gem 'jquery-rails'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -66,6 +67,8 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'database_cleaner'
+  gem 'seed-fu'
+  gem 'poltergeist'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

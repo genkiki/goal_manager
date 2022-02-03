@@ -1,5 +1,5 @@
 FROM ruby:2.5
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client phantomjs
 RUN mkdir /goal_manager
 WORKDIR /goal_manager
 COPY Gemfile /goal_manager/Gemfile

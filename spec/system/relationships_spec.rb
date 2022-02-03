@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Relationships", type: :feature do
+RSpec.describe "Relationships", type: :system do
 
   let!(:user) { FactoryBot.create(:user, name: "user") }
   let!(:other_user) { FactoryBot.create(:user, name:"other_user") }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Goals", type: :feature do
+RSpec.describe "Goals", type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:goal) { FactoryBot.create(:goal) }
 

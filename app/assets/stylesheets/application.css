@@ -88,7 +88,9 @@ header {
 
 /*チェックは見えなくする*/
 .hidden_box input {
-  display: none;
+  /* display: none; */
+  height: 1px;
+  width: 1px;
 }
 
 /*中身を非表示にしておく*/
@@ -169,6 +171,11 @@ header {
 
 .comment-list {
   list-style: none;
+}
+
+.edit-comment {
+  width: 10px;
+  height: 10px;
 }
 
 /* 目標登録 */

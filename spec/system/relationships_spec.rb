@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Relationships", type: :system do
-
   let!(:user) { FactoryBot.create(:user, name: "user") }
-  let!(:other_user) { FactoryBot.create(:user, name:"other_user") }
+  let!(:other_user) { FactoryBot.create(:user, name: "other_user") }
   let!(:goal) { FactoryBot.create(:goal) }
+  let!(:relationshipAtoB) { FactoryBot.create(:relationship, follower: other_user, followed: user) }
 
   scenario "ユーザー情報画面でフォローしたユーザーが一覧に表示される" do
     sign_in_as user
@@ -18,10 +18,7 @@ RSpec.describe "Relationships", type: :system do
     expect(page).to have_content goal.user.name
   end
 
-  let!(:relationshipAtoB) { FactoryBot.create(:relationship, follower: other_user, followed: user) }
-
   scenario "フォロワー一覧画面でフォローしたユーザーが一覧に表示される" do
-
     sign_in_as user
     check "label1"
     click_link "マイページ"
@@ -37,7 +34,6 @@ RSpec.describe "Relationships", type: :system do
   end
 
   scenario "ユーザー情報画面でフォロー解除したユーザーは一覧に表示されない" do
-
     sign_in_as user
     FactoryBot.create(:relationship, follower: user, followed: goal.user)
     click_link goal.user.name
@@ -47,7 +43,7 @@ RSpec.describe "Relationships", type: :system do
     click_link "マイページ"
     click_link "フォロー"
 
-    expect(page).to_not have_content goal.user.name
+    expect(page).not_to have_content goal.user.name
   end
 
   scenario "フォロワー一覧画面でフォロー解除したユーザーは一覧に表示されない" do
@@ -62,7 +58,7 @@ RSpec.describe "Relationships", type: :system do
     click_link "マイページ"
     click_link "フォロー"
 
-    expect(page).to_not have_content other_user.name
+    expect(page).not_to have_content other_user.name
   end
 
   scenario "フォロー一覧画面でフォロー解除したユーザーは一覧に表示されない" do
@@ -76,6 +72,6 @@ RSpec.describe "Relationships", type: :system do
     check "label1"
     click_link "マイページ"
     click_link "フォロー"
-    expect(page).to_not have_content other_user.name
+    expect(page).not_to have_content other_user.name
   end
 end

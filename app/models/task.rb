@@ -11,5 +11,4 @@ class Task < ApplicationRecord
   def state_text(state_id)
     GoalState.find(state_id).state
   end
-
 end

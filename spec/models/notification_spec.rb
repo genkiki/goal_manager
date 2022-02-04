@@ -26,7 +26,6 @@ RSpec.describe Notification, type: :model do
     end
 
     context "必須入力項目が空欄の場合" do
-
       it "訪問者IDが入力されていないと無効" do
         notification = FactoryBot.build(:notification,
                                         visitor_id: nil)

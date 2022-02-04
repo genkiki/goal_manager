@@ -1,13 +1,8 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, {only: [:update, :destroy]}
+  before_action :set_comment, { only: [:update, :destroy] }
   def create
-    logger.debug "called create"
-    logger.debug "params[:goal_id]:#{params[:goal_id]}"
-    logger.debug "params[:user_id]:#{params[:user_id]}"
     comment = Comment.new(comment_params)
     goal = Goal.find(comment.goal_id)
-    logger.debug "goal.id:#{goal.id}"
-
     if comment.save
       goal.save_notification_comment!(current_user, comment)
       redirect_to goal_path(comment.goal_id)

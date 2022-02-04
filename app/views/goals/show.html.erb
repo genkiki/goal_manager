@@ -70,8 +70,6 @@
                 </div>
               </div>
               <% if comment.user.id == session[:user_id] %>
-              <% logger.debug comment.user.id %>
-              <% logger.debug session[:user_id] %>
                 <div>
                   <a data-comment-id=<%= comment.id %> class="js-edit-comment-button" id="edit-comment">
                     <i class="fas fa-edit text-primary"></i>

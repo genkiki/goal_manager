@@ -4,6 +4,7 @@ RSpec.describe Task, type: :model do
   let(:user) { FactoryBot.build(:user) }
   let(:goal) { FactoryBot.build(:goal, user: user) }
   let(:task) { FactoryBot.build(:task, user: user, goal: goal) }
+
   describe "必須入力チェック" do
     context "必須入力項目が入力されている場合" do
       it "すべての項目が入力されていると有効" do
@@ -11,7 +12,6 @@ RSpec.describe Task, type: :model do
       end
 
       it "開始日と終了日は空欄でも有効" do
-        # task = FactoryBot.build(:task, start_date: nil, end_date: nil)
         task.start_date = nil
         task.end_date = nil
         expect(task).to be_valid

@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   resources :tasks, only: [:show, :edit, :destroy]
   resources :users do
     member do
-      get :following, :followers, :follow, :unfollow, :bookmarks, :setting, :posts, :favorites, :notifications
+      get :following, :followers, :follow, :unfollow, :bookmarks, :setting,
+          :posts, :favorites, :notifications
     end
   end
   resources :relationships, only: [:create, :destroy]

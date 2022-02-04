@@ -5,9 +5,9 @@ RSpec.configure do |config|
     driven_by :selenium, using: :headless_chrome, options: {
       browser: :remote,
       url: ENV.fetch("SELENIUM_DRIVER_URL"),
-      desired_capabilities: :chrome
+      desired_capabilities: :chrome,
     }
     Capybara.server_host = 'web'
-    Capybara.app_host="http://#{Capybara.server_host}"
+    Capybara.app_host = "http://#{Capybara.server_host}"
   end
 end

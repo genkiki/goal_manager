@@ -48,6 +48,6 @@ RSpec.describe "Comments", type: :system, js: true do
       click_link "remove-comment"
     end
     expect(page).to have_content "コメント(0)"
-    expect(page).to_not have_content "test comment"
+    expect(page).not_to have_content "test comment"
   end
 end

@@ -8,7 +8,6 @@ class GoalsController < ApplicationController
   def show
     @goal = Goal.includes(comments: :user).find(params[:id])
     GoalState.all.each do |data|
-      logger.debug "data:#{data}"
     end
     @result = GoalState.find(@goal.result).state
   end
@@ -62,9 +61,7 @@ class GoalsController < ApplicationController
 
   def following
     user = User.find(session[:user_id])
-    logger.debug "user_id:#{user.id}"
     @goals = []
-      logger.debug "user.following:#{user.following}"
     user.following.each do |follow_user|
       follow_user.goals.each do |goal|
         @goals.push(goal)
@@ -76,6 +73,9 @@ class GoalsController < ApplicationController
 
   def goal_params
     params.require(:goal).permit(:content, :start_date, :end_date, :result, :cause, :improvement,
-                                  tasks_attributes: [:id, :user_id, :goal_id, :content, :action, :start_date, :end_date, :status, :_destroy])
+                                 tasks_attributes: [
+                                   :id, :user_id, :goal_id, :content, :action,
+                                   :start_date, :end_date, :status, :_destroy,
+                                 ])
   end
 end

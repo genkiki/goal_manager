@@ -12,17 +12,19 @@ class Goal < ApplicationRecord
 
   scope :recent, -> { order(updated_at: :desc) }
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(auth_object)
     ['content', 'result', 'created_at']
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(auth_object)
     []
   end
 
   def create_notification_bookmark!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and goal_id = ? and action = ?",
-                                current_user.id, user_id, id, 'bookmark'])
+    temp = Notification.where([
+      "visitor_id = ? and visited_id = ? and goal_id = ? and action = ?",
+      current_user.id, user_id, id, 'bookmark',
+    ])
     if temp.blank?
       notification = current_user.active_notifications.new(
         goal_id: id,

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Bookmarks", type: :system do
   let(:user) { FactoryBot.create(:user) }
-  # let(:goal) { FactoryBot.create(:goal) }
 
   scenario "ブックマークした記事は一覧に表示される" do
     goal = FactoryBot.create(:goal)
@@ -31,7 +30,7 @@ RSpec.describe "Bookmarks", type: :system do
     check "label1"
     click_link "マイページ"
     click_link "ブックマーク"
-    expect(page).to_not have_content goal.content
+    expect(page).not_to have_content goal.content
   end
 
   scenario "ブックマーク数がカウントされる" do
@@ -42,5 +41,4 @@ RSpec.describe "Bookmarks", type: :system do
     visit "/"
     expect(page).to have_content "ブックマーク数：1"
   end
-
 end

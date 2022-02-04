@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, {only: [:edit, :destroy]}
+  before_action :authenticate_user, { only: [:edit, :destroy] }
 
   def new
     @user = User.new
@@ -108,7 +108,8 @@ class UsersController < ApplicationController
   end
 
   def notifications
-    @notifications = current_user.passive_notifications.includes(:visitor, :goal).page(params[:page]).per(20)
+    @notifications = current_user.passive_notifications.includes(:visitor, :goal).
+      page(params[:page]).per(20)
     @notifications.where(check: false).each do |notification|
       notification.update_attributes(check: true)
     end
@@ -117,6 +118,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :introduce, :password, :password_confirmation, :image)
+    params.require(:user).permit(:name, :email, :introduce, :password,
+                                 :password_confirmation, :image)
   end
 end

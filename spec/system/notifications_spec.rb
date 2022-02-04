@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Notifications", type: :system do
-
   let!(:user) { FactoryBot.create(:user, name: "user") }
-  let!(:other_user) { FactoryBot.create(:user, name:"other_user") }
+  let!(:other_user) { FactoryBot.create(:user, name: "other_user") }
   let!(:goal) { FactoryBot.create(:goal) }
 
   scenario "フォローされた時に通知が一覧に表示される" do
